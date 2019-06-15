@@ -2,6 +2,7 @@ package question1;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class IHMTestEnsemble extends JFrame {
 
@@ -64,27 +65,30 @@ public class IHMTestEnsemble extends JFrame {
         panel3.setLayout(new java.awt.FlowLayout(0, 5, 5));
         panel3.setBackground(java.awt.Color.green);
         label4 = new JLabel();
-        label4.setText("Opérations e1 Op e2  :");
+        label4.setText("Op�rations e1 Op e2  :");
         label4.setName("label4");
         panel3.add(label4);
 
         button1 = new JButton("union");
         button1.setBackground(java.awt.Color.red);
         button1.setName("union");
-        button1.addActionListener(null  // à compléter, par une instance de
-                                        // classe anonyme, usage de
-                                        // unionActionPerformed voir en bas de
-                                        // page
+        button1.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    IHMTestEnsemble.this.unionActionPerformed(ae);
+                }
+            }
         );
 
         panel3.add(button1);
         button2 = new JButton("intersection");
         button2.setBackground(java.awt.Color.yellow);
+        button2.setActionCommand("intersection");
         button2.setName("intersection");
-        button2.addActionListener(null  // à compléter, par une instance de
-                                        // classe anonyme,
-                                        // intersectionActionPerformed voir en
-                                        // bas de page
+        button2.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    IHMTestEnsemble.this.intersectionActionPerformed(ae);
+                }
+            }  
         );
 
         panel3.add(button2);
@@ -92,20 +96,23 @@ public class IHMTestEnsemble extends JFrame {
         button3.setBackground(java.awt.Color.pink);
         button3.setActionCommand("difference");
         button3.setName("difference");
-        button3.addActionListener(null  // à compléter, par une instance de
-                                        // classe anonyme, usage de
-                                        // differenceActionPerformed voir en bas
-                                        // de page
+        button3.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    IHMTestEnsemble.this.differenceActionPerformed(ae);
+                }
+            }  
         );
 
         panel3.add(button3);
         button4 = new JButton("diffSymetrique");
         button4.setBackground(java.awt.Color.cyan);
+        button4.setActionCommand("diffSymetrique");
         button4.setName("diffSymetrique");
-        button4.addActionListener(null  // à compléter, par une instance de
-                                        // classe anonyme, usgae de
-                                        // diffSymetriqueActionPerformed voir en
-                                        // bas de page
+        button4.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    IHMTestEnsemble.this.diffSymetriqueActionPerformed(ae);
+                }
+            }  
         );
 
         panel3.add(button4);
@@ -114,8 +121,8 @@ public class IHMTestEnsemble extends JFrame {
         panel4 = new JPanel();
         panel4.setLayout(new java.awt.FlowLayout(0, 5, 5));
         label3 = new JLabel();
-        label3.setText("Résultat");
-        label3.setName("Résultat");
+        label3.setText("R�sultat");
+        label3.setName("R�sultat");
 
         panel4.add(label3);
 
@@ -165,7 +172,7 @@ public class IHMTestEnsemble extends JFrame {
         Ensemble<String> e2 = getSet(textField2);
         textField3.setText(e1.diffSym(e2).toString());
     }// GEN-LAST:event_button4ActionPerformed
-    
+
     public static void main(String[] args){
         new IHMTestEnsemble();
     }
